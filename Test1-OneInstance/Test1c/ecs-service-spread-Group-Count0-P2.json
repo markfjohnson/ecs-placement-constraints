@@ -1,0 +1,25 @@
+{
+  "cluster": "mfj-ecs",
+  "serviceName": "SINATRA-service-group-P2",
+  "taskDefinition": "sinatra-hi",
+  "desiredCount": 5,
+  "placementStrategy": [
+    {
+      "field": "attribute:ecs.availability-zone",
+      "type": "spread"
+    },
+    {
+      "field": "instanceId",
+      "type": "spread"
+    }
+  ],
+  "placementConstraints": [
+    {
+      "expression": "task:group!=service:SINATRA-service-group-P1",
+      "type": "memberOf"
+    }
+  ]
+
+}
+
+

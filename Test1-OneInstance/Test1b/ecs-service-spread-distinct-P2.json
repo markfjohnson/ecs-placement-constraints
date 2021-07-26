@@ -1,0 +1,22 @@
+{
+  "cluster": "mfj-ecs",
+  "serviceName": "SINATRA-service-distinct-part2",
+  "taskDefinition": "sinatra-hi",
+  "desiredCount": 5,
+  "placementStrategy": [
+    {
+      "field": "attribute:ecs.availability-zone",
+      "type": "spread"
+    },
+    {
+      "field": "instanceId",
+      "type": "spread"
+    }
+  ],
+  "placementConstraints": [
+    {
+      "type": "distinctInstance"
+    }
+  ]
+
+}
